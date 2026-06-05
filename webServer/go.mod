@@ -1,3 +1,3 @@
-module github.com/takatora220401/misc-tools/webServer
+module github.com/takatora220401/MISC/webServer
 
-go 1.26.1
+go 1.25.5

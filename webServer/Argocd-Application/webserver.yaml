@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+name: my-webapp
+namespace: argocd
+spec:
+project: default
+
+source:
+repoURL: https://github.com/takatora220401/MISC.git
+targetRevision: main
+path: Argocd-Application
+
+destination:
+server: https://kubernetes.default.svc
+namespace: my-webapp
+
+syncPolicy:
+automated:
+prune: true
+selfHeal: true
+
+syncOptions:
+  - CreateNamespace=true
