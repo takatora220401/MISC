@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	cert, err := tls.LoadX509KeyPair("cert.pem", "key.pem")
+	cert, err := tls.LoadX509KeyPair("/etc/tls/tls.crt", "/etc/tls/tls.key")
 	if err != nil {
 		panic(err)
 	}
@@ -22,7 +22,7 @@ func main() {
 	server := &http.Server{
 		Addr:      ":8443",
 		TLSConfig: tlsConfig,
-		Handler:   mux, 
+		Handler:   mux,
 	}
 
 	mux.HandleFunc("/hostname", Hostname)

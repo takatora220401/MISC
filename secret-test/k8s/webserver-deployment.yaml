@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-webapp
-  namespace: my-webapp
 spec:
   replicas: 2
   selector:
@@ -15,7 +14,15 @@ spec:
     spec:
       containers:
       - name: web-server
-        image: demo-web-server:848613a
+        image: demo-web-server:effd547897b1cc03cfe98213a375e8be04e97a39
         ports:
         - containerPort: 8443
           protocol: TCP
+        volumeMounts:
+        - name: tls-certs
+          mountPath: "/etc/tls"
+          readOnly: true
+      volumes:
+      - name: tls-certs
+        secret: 
+          secretName: my-tls-secret
