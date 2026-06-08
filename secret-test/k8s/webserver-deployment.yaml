@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: web-server
-        image: demo-web-server:effd547897b1cc03cfe98213a375e8be04e97a39
+        image: my-webapp:4786bfa
         ports:
         - containerPort: 8443
           protocol: TCP
